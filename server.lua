@@ -7,7 +7,11 @@ RegisterServerEvent("hardcap:playerActivated")
 RegisterServerEvent("playerDropped")
 
 function ActivateTrain ()
-	TriggerClientEvent('StartTrain', GetHostId())
+	if (PlayerCount) == 1 then
+		TriggerClientEvent('StartTrain', GetHostId())
+	else
+		SetTimeout(15000,ActivateTrain)
+	end
 end
 --snippet from hardcap to make PlayerCount work
 
