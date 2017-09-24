@@ -1,4 +1,4 @@
-
+trainspawned = false
 PlayerCount = 0
 list = {}
 
@@ -7,10 +7,14 @@ RegisterServerEvent("hardcap:playerActivated")
 RegisterServerEvent("playerDropped")
 
 function ActivateTrain ()
-	if (PlayerCount) == 1 then
+	if (PlayerCount) == 1 and not trainspawned then
 		TriggerClientEvent('StartTrain', GetHostId())
+		trainspawned = true
 	else
 		SetTimeout(15000,ActivateTrain)
+		if (PlayerCount) == 0 then
+			trainspawned = false
+		end
 	end
 end
 --snippet from hardcap to make PlayerCount work
