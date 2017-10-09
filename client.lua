@@ -1,71 +1,18 @@
 Citizen.CreateThread(function()
-
-function LoadTrainModels() -- f*ck your rails, too!
-			tempmodel = GetHashKey("freight")
-			RequestModel(tempmodel)
-			while not HasModelLoaded(tempmodel) do
-				RequestModel(tempmodel)
-				Citizen.Wait(0)
-			end
-			
-			tempmodel = GetHashKey("freightcar")
-			RequestModel(tempmodel)
-			while not HasModelLoaded(tempmodel) do
-				RequestModel(tempmodel)
-				Citizen.Wait(0)
-			end
-			
-			tempmodel = GetHashKey("freightgrain")
-			RequestModel(tempmodel)
-			while not HasModelLoaded(tempmodel) do
-				RequestModel(tempmodel)
-				Citizen.Wait(0)
-			end
-			
-			tempmodel = GetHashKey("freightcont1")
-			RequestModel(tempmodel)
-			while not HasModelLoaded(tempmodel) do
-				RequestModel(tempmodel)
-				Citizen.Wait(0)
-			end
-			
-			tempmodel = GetHashKey("freightcont2")
-			RequestModel(tempmodel)
-			while not HasModelLoaded(tempmodel) do
-				RequestModel(tempmodel)
-				Citizen.Wait(0)
-			end
-			
-			tempmodel = GetHashKey("freighttrailer")
-			RequestModel(tempmodel)
-			while not HasModelLoaded(tempmodel) do
-				RequestModel(tempmodel)
-				Citizen.Wait(0)
-			end
-
-			tempmodel = GetHashKey("tankercar")
-			RequestModel(tempmodel)
-			while not HasModelLoaded(tempmodel) do
-				RequestModel(tempmodel)
-				Citizen.Wait(0)
-			end
-			
-			tempmodel = GetHashKey("metrotrain")
-			RequestModel(tempmodel)
-			while not HasModelLoaded(tempmodel) do
-				RequestModel(tempmodel)
-				Citizen.Wait(0)
-			end
-			
-			tempmodel = GetHashKey("s_m_m_lsmetro_01")
-			RequestModel(tempmodel)
-			while not HasModelLoaded(tempmodel) do
-				RequestModel(tempmodel)
-				Citizen.Wait(0)
-			end
-			
 		
-			
+local models = { "freight", "freightcar", "freightgrain", "freightcont1", "freightcont2",
+			"freighttrailer", "tankercar", "metrotrain", "s_m_m_lsmetro_01" }
+		
+function LoadTrainModels() -- f*ck your rails, too!
+	
+	for  _,model in ipairs(models) do
+		tempmodel = GetHashKey(model)
+		RequestModel(tempmodel)
+		while not HasModelLoaded(tempmodel) do
+			RequestModel(tempmodel)
+			Citizen.Wait(0)
+		end
+	end
 end
 
 LoadTrainModels()
